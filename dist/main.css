@@ -27,7 +27,7 @@ body {
 .basicInfo {
   width: 30%;
   height: 100%;
-  background-color: rgba(32, 78, 143, 0.8431372549);
+  background-color: #1a4177;
   color: white;
 }
 .basicInfo_wrapper {
@@ -180,6 +180,18 @@ body {
   font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
   outline: none;
   border: none;
+}
+.details .search-date .searchbar-wrapper .searchBar .searchInput::-moz-placeholder {
+  color: red;
+  font-size: 0.8rem;
+}
+.details .search-date .searchbar-wrapper .searchBar .searchInput:-ms-input-placeholder {
+  color: red;
+  font-size: 0.8rem;
+}
+.details .search-date .searchbar-wrapper .searchBar .searchInput::placeholder {
+  color: red;
+  font-size: 0.8rem;
 }
 .details .overview {
   margin-top: 2rem;

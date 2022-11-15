@@ -1,20 +1,20 @@
-const currentTemperature = document.getElementById('currentTemp')
-const weatherIcon = document.getElementById('weatherIcon')
-const weatherDescription = document.getElementById('weatherDescription')
-const windSpeed = document.getElementById('wind')
-const windDirection = document.getElementById('windDir')
-const lowestToday = document.getElementById('lowestToday')
-const highestToday = document.getElementById('highestToday')
-const pressure = document.getElementById('pressure')
+const currentTemperature = document.getElementById('currentTemp');
+const weatherIcon = document.getElementById('weatherIcon');
+const weatherDescription = document.getElementById('weatherDescription');
+const windSpeed = document.getElementById('wind');
+const windDirection = document.getElementById('windDir');
+const lowestToday = document.getElementById('lowestToday');
+const highestToday = document.getElementById('highestToday');
+const pressure = document.getElementById('pressure');
 const humidity = document.getElementById('humidity')
-const sunrise = document.getElementById('sunrise')
-const sunset = document.getElementById('sunset')
-const sunriseRelative = document.getElementById('sunriseRelative')
-const sunsetRelative = document.getElementById('sunsetRelative')
-const userLocation = document.getElementById('location')
-const time = document.getElementById('time')
-const date = document.getElementById('date')
-const searchInput = document.getElementById('searchInput')
+const sunrise = document.getElementById('sunrise');
+const sunset = document.getElementById('sunset');
+const sunriseRelative = document.getElementById('sunriseRelative');
+const sunsetRelative = document.getElementById('sunsetRelative');
+const userLocation = document.getElementById('location');
+const time = document.getElementById('time');
+const date = document.getElementById('date');
+const searchInput = document.getElementById('searchInput');
 
 // Create an array of month names
 const monthNames = [
@@ -32,9 +32,17 @@ const monthNames = [
   'December',
 ]
 
-const getWeatherData = async () => {
+const getWeatherData = async (loc) => {
+
   try {
-    const city = searchInput.value || 'Delhi';
+    // console.log(loc)
+    let currentLoc=null;
+    if(loc!=null)
+       {
+        currentLoc=await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${loc.coords.latitude}+${loc.coords.longitude}&key=e230a923526c4008a22a3a76ebac83db`).then(resp=>resp.json()).then(jsn=>{return(jsn.results[0].components.city);});
+      //  console.log(h);
+      }
+    const city = searchInput.value || currentLoc || 'Delhi';
 
     // Create 2 promises that call the APIs and pass in the city name
     // If the user haven't typed anything, use Los Angeles as default
@@ -64,9 +72,13 @@ const getWeatherData = async () => {
 
     // Using the Promise.all method, wait for both promises to resolve, and save the returned data in a variable
     const data = await Promise.all([currentWeather, forecast]);
-    console.log(data[0]);
+    // console.log(data[0].cod);
+    if(data[0].cod==404){
+      searchInput.value="";
+      searchInput.placeholder=data[0].message.toUpperCase();}
     // Now pass that data into the updateDom() function
     updateDom(data);
+
   } catch (error) {
     console.log(error);
   }
@@ -97,7 +109,6 @@ const getDirection = deg => {
 
 
 const updateDom = data => {
-
   currentTemperature.innerText = data[0].main.temp;
 
   // console.log(data[0].weather[0].icon);
@@ -199,6 +210,9 @@ const renderChart = data => {
   // Using the given function from the documentation, generate the chart using the options above
   myChart.setOption(option);
 }
-
+const callGetWeatherData=()=>{
+  getWeatherData(null);
+}
 // Call the getWeatherData function
-getWeatherData();
+navigator.geolocation.getCurrentPosition(getWeatherData,callGetWeatherData);
+// getWeatherData();
