@@ -1,0 +1,272 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding: 0;
+    font-family: Avenir Next;
+}
+  .wraper{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  @media (max-width:800px) {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+ }
+ .basicInfo{
+    width: 30%;
+    height: 100%;
+    background-color: #204e8fd7;
+    
+    color: white;
+    &_wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: .8rem;
+        .date-place{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+            font-size:  clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+            .time{
+                flex: 1;
+                text-align: end;
+                
+            }
+            .location{
+                flex: 1;
+            }
+        }
+        .currentWeather{
+            display: flex;
+            width: 100%;
+            margin-top: 2rem;
+
+            .weatherIconContainer{
+                flex: 1 1 0;
+                display: flex;
+                align-items: center;
+                height: 5.4rem;
+                width: 5.4rem;
+                margin-right: 1rem;
+                 img {
+                        aspect-ratio: 1;
+                  }
+            }
+            .currentTemperatureValueContainer{
+                flex: 2 1 0;
+                display: flex;
+                align-items: center;
+                .currentTemperatureValue{
+                    font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+                    // vertical-align: middle;
+                    
+                }
+                .currentTemperatureMetric{
+                    font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+                    // vertical-align: middle;
+                }
+            }
+            .temperatureDescription{
+                flex: 1 1 0;
+                display: flex;
+                align-items: center;
+                text-transform: capitalize;
+                font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+            }
+        }
+
+        .sscontainer{
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap:1rem;
+            
+            .sunrise-sunset{
+                font-style: italic;
+                font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+            }
+            .sunStageContainer{
+                display: flex;
+                padding: 10px;
+                border: 2px #7295d6 solid;
+                background-color: #294269a5;
+                
+                border-radius: 10px;
+                .sunIcon{
+                    font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+                    margin-right: 1rem;
+                    align-self: center;
+                }
+                .col{
+                    flex: 1;
+                    .sunStageTitle{
+                        color: #98989b;
+                        font-weight: 400;
+                        font-size:0.8rem;
+                    }
+                    .sunTime{
+                        font-size: 1rem;
+                        font-weight: 500;
+                    }
+                }
+                .sunTimeRelative{
+                    font-size:0.8rem;
+                    font-weight: 400;
+                }
+
+            }
+        }
+    }
+    @media (max-width:800px) {
+       width: 100%;
+       height: auto;
+    }
+  }
+  .details{
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+    
+    display: flex;
+    flex-direction: column;
+    padding: .8rem;
+    .search-date{
+        display: flex;    
+        .date{
+            font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+            flex: 1;
+        }
+        .searchbar-wrapper{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: end;
+            .searchBar{
+                width: max-content;
+                border: 1px solid #abebeb;
+                border-radius: 10px;
+                align-items: center;
+                justify-content: center;
+                background: #eef3f3;
+                .searchicon{
+                    background: #eef3f3;
+                    margin-left: 3px;
+                    font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+                }
+                .searchButton{
+                    font-size:clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+                    outline: none;
+                    border: none;
+                    background: #5790eb38;
+                    border-radius: 7px;
+                }
+                .searchInput{
+                    padding: 0;
+                    margin: 0;
+                    background: #eef3f3;
+                    font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+                    outline: none;
+                    border: none;
+                }
+            }
+
+        }
+
+    }
+    .overview{
+        margin-top: 2rem;
+        .sectionTitle{
+            font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+        }
+
+    }
+    .overview_container{
+        margin-top: 1rem;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 1.5rem;
+        column-gap: 1.5rem;
+        width: 100%;
+        .overviewProp{
+            display: flex;
+            background: #eef3f3;
+            border: 2px solid #abebeb;
+            padding: 10px;
+            border-radius: 10px;
+            .propIconContainer{
+                font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+                margin-right: .75rem;
+            }
+            .propValueContainer{
+                flex: 1;
+                font-size:0.8rem;;
+            }
+            .propTitle{
+                color:#89898b ;
+                font-size:clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem) ;
+            }
+            .propMain{display: flex;
+            .primaryData{
+                flex: 1;
+            }
+            .secondaryData{
+                flex: 1;
+            }
+        }
+        }
+    }
+    .tempForecast{
+        margin-top: 1rem;
+        .sectionTitle{
+            font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+        }
+        #chart{
+            width: 100%; height: 400px;
+        }
+    }
+    &::-webkit-scrollbar{
+        width: .5rem;
+    }
+    &::-webkit-scrollbar-track{
+        background-color: #204e8fd7;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #1c2d48;
+    }
+    @media (max-width:800px) {
+        width: 100%;
+        height: auto;
+        &::-webkit-scrollbar{
+            display: none   ;      
+        }
+     }
+     
+  }
+  @media (max-width:800px) {
+    .searchbar-wrapper{
+        grid-area: search;
+    }
+    .date{
+        grid-area: date;
+    }
+    .search-date{
+        display: grid!important;
+        gap: .5rem;
+        grid-template-areas: 
+        "search"
+        "date";
+    }
+
+}

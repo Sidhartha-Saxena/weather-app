@@ -1,0 +1,270 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Avenir Next;
+}
+
+.wraper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .wraper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.basicInfo {
+  width: 30%;
+  height: 100%;
+  background-color: rgba(32, 78, 143, 0.8431372549);
+  color: white;
+}
+.basicInfo_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+}
+.basicInfo_wrapper .date-place {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+}
+.basicInfo_wrapper .date-place .time {
+  flex: 1;
+  text-align: end;
+}
+.basicInfo_wrapper .date-place .location {
+  flex: 1;
+}
+.basicInfo_wrapper .currentWeather {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+}
+.basicInfo_wrapper .currentWeather .weatherIconContainer {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  height: 5.4rem;
+  width: 5.4rem;
+  margin-right: 1rem;
+}
+.basicInfo_wrapper .currentWeather .weatherIconContainer img {
+  aspect-ratio: 1;
+}
+.basicInfo_wrapper .currentWeather .currentTemperatureValueContainer {
+  flex: 2 1 0;
+  display: flex;
+  align-items: center;
+}
+.basicInfo_wrapper .currentWeather .currentTemperatureValueContainer .currentTemperatureValue {
+  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+}
+.basicInfo_wrapper .currentWeather .currentTemperatureValueContainer .currentTemperatureMetric {
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.basicInfo_wrapper .currentWeather .temperatureDescription {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.basicInfo_wrapper .sscontainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.basicInfo_wrapper .sscontainer .sunrise-sunset {
+  font-style: italic;
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer {
+  display: flex;
+  padding: 10px;
+  border: 2px #7295d6 solid;
+  background-color: rgba(41, 66, 105, 0.6470588235);
+  border-radius: 10px;
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer .sunIcon {
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+  margin-right: 1rem;
+  align-self: center;
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer .col {
+  flex: 1;
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer .col .sunStageTitle {
+  color: #98989b;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer .col .sunTime {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.basicInfo_wrapper .sscontainer .sunStageContainer .sunTimeRelative {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+@media (max-width: 800px) {
+  .basicInfo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.details {
+  width: 70%;
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+}
+.details .search-date {
+  display: flex;
+}
+.details .search-date .date {
+  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+  flex: 1;
+}
+.details .search-date .searchbar-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: end;
+}
+.details .search-date .searchbar-wrapper .searchBar {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border: 1px solid #abebeb;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #eef3f3;
+}
+.details .search-date .searchbar-wrapper .searchBar .searchicon {
+  background: #eef3f3;
+  margin-left: 3px;
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.details .search-date .searchbar-wrapper .searchBar .searchButton {
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+  outline: none;
+  border: none;
+  background: rgba(87, 144, 235, 0.2196078431);
+  border-radius: 7px;
+}
+.details .search-date .searchbar-wrapper .searchBar .searchInput {
+  padding: 0;
+  margin: 0;
+  background: #eef3f3;
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+  outline: none;
+  border: none;
+}
+.details .overview {
+  margin-top: 2rem;
+}
+.details .overview .sectionTitle {
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.details .overview_container {
+  margin-top: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 1.5rem;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+  width: 100%;
+}
+.details .overview_container .overviewProp {
+  display: flex;
+  background: #eef3f3;
+  border: 2px solid #abebeb;
+  padding: 10px;
+  border-radius: 10px;
+}
+.details .overview_container .overviewProp .propIconContainer {
+  font-size: clamp(2rem, 1.8571rem + 0.7143vw, 3rem);
+  margin-right: 0.75rem;
+}
+.details .overview_container .overviewProp .propValueContainer {
+  flex: 1;
+  font-size: 0.8rem;
+}
+.details .overview_container .overviewProp .propTitle {
+  color: #89898b;
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.details .overview_container .overviewProp .propMain {
+  display: flex;
+}
+.details .overview_container .overviewProp .propMain .primaryData {
+  flex: 1;
+}
+.details .overview_container .overviewProp .propMain .secondaryData {
+  flex: 1;
+}
+.details .tempForecast {
+  margin-top: 1rem;
+}
+.details .tempForecast .sectionTitle {
+  font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+}
+.details .tempForecast #chart {
+  width: 100%;
+  height: 400px;
+}
+.details::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.details::-webkit-scrollbar-track {
+  background-color: rgba(32, 78, 143, 0.8431372549);
+}
+.details::-webkit-scrollbar-thumb {
+  background-color: #1c2d48;
+}
+@media (max-width: 800px) {
+  .details {
+    width: 100%;
+    height: auto;
+  }
+  .details::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .searchbar-wrapper {
+    grid-area: search;
+  }
+  .date {
+    grid-area: date;
+  }
+  .search-date {
+    display: grid !important;
+    gap: 0.5rem;
+    grid-template-areas: "search" "date";
+  }
+}/*# sourceMappingURL=main.css.map */

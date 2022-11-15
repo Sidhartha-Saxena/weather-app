@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-16 " >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@4.0.2/dist/timeago.min.js"></script>
+    <script src="https://kit.fontawesome.com/59956a2afb.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="wraper">
+      <div class="basicInfo">
+        <div class="basicInfo_wrapper">
+          <div class="date-place">
+            <div class="location" id="location">location</div>
+            <div class="time" id="time">time</div>
+            <!-- rm -->
+          </div>
+          <div class="currentWeather">
+            <div class="weatherIconContainer">
+              <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" id="weatherIcon" />
+            </div>
+            <div class="currentTemperatureValueContainer">
+              <div>
+                <span class="currentTemperatureValue" id="currentTemp">33</span>
+                <!-- rm -->
+                <span class="currentTemperatureMetric">˚F</span></div>
+            </div>
+            <div class="temperatureDescription">
+              <span id="weatherDescription">clear</span>
+            </div>
+            <!-- rm -->
+          </div>
+          <div class="sscontainer">
+            <div class="sunrise-sunset">Sunrise & Sunset</div>
+            <div class="sunStageContainer">
+              <div class="sunIcon"><i class="fa-solid fa-sun"></i></div>
+              <div class="col">
+                <div class="sunStageTitle">Sunrise</div>
+                <div class="sunTime" id="sunrise">6:40am</div>
+                <!-- rm -->
+              </div>
+              <div class="sunTimeRelative" id="sunriseRelative">in 5 min</div>
+              <!-- rm -->
+            </div>
+            <div class="sunStageContainer">
+              <div class="sunIcon"><i class="fa-solid fa-moon"></i></div>
+              <div class="col">
+                <div class="sunStageTitle">Sunset</div>
+                <div class="sunTime" id="sunset">7:00pm</div>
+                <!-- rm -->
+              </div>
+              <div class="sunTimeRelative" id="sunsetRelative">in 7hours</div>
+              <!-- rm -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details">
+        <div class="details_wrapper">
+            <div class="search-date">
+                <div class="date" id="date">Saturday, Nov 12, 2022</div>
+                <div class="searchbar-wrapper">
+                    <div class="searchBar">
+                        <i class="searchicon fa-solid fa-magnifying-glass"></i>
+                      <input class="searchInput" id="searchInput" type="text" />
+                      <button class="searchButton" onclick="getWeatherData()">
+                        Search
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="overview">
+                <div class="sectionTitle">Today Overview</div>  
+                <div class="overview_container">
+                    <div class="overviewProp">
+                        <div class="propIconContainer">
+                          <i class="propIcon fa-solid fa-wind"></i>
+                        </div>
+                        <div class="propValueContainer">
+                          <div class="propTitle">Wind</div>
+                          <div class="propMain">
+                            <span class="primaryData">
+                              <span class="propValue" id="wind"></span>
+                              <span class="propMetric">mph</span>
+                            </span>
+                            <span class="secondaryData" id="windDir">W</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="overviewProp">
+                        <div class="propIconContainer">
+                          <i class="propIcon fa-solid fa-temperature-half"></i>
+                        </div>
+                        <div class="propValueContainer">
+                          <div class="propTitle">Lowest / Highest</div>
+                          <div class="propMain">
+                            <span class="primaryData">
+                              <span class="propValue" id="lowestToday"></span>
+                              <span class="propMetric">˚F</span>
+                              <span> / </span>
+                              <span class="propValue" id="highestToday"></span>
+                              <span class="propMetric">˚F</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="overviewProp">
+                        <div class="propIconContainer">
+                          <i class="propIcon fa-solid fa-water"></i>
+                        </div>
+                        <div class="propValueContainer">
+                          <div class="propTitle">Pressure</div>
+                          <div class="propMain">
+                            <span class="primaryData">
+                              <span class="propValue" id="pressure" style="margin-right:3px ;"></span>
+                              <span class="propMetric">hpa</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="overviewProp">
+                        <div class="propIconContainer">
+                          <i class="propIcon fa-solid fa-droplet"></i>
+                        </div>
+                        <div class="propValueContainer">
+                          <div class="propTitle">Humidity</div>
+                          <div class="propMain">
+                            <span class="primaryData">
+                              <span class="propValue" id="humidity"></span>
+                              <span class="propMetric">%</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="tempForecast">
+                <div class="sectionTitle">Temperature Forecast</div>
+                <div id="chart"></div>
+              </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="src.js"></script>
+  </body>
+</html>
