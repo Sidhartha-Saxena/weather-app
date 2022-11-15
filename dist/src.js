@@ -16,6 +16,10 @@ const time = document.getElementById('time');
 const date = document.getElementById('date');
 const searchInput = document.getElementById('searchInput');
 
+
+searchInput.addEventListener('keydown',(e)=>{
+  if(e.key=="Enter")getWeatherData();
+});
 // Create an array of month names
 const monthNames = [
   'January',
